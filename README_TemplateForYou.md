@@ -94,20 +94,25 @@ function DFS(graph, start):
 * **Complexity Analysis:** Big O time and space complexity display.
 
 ## Screenshots
-
+---
 ![Settings Panel](./images/settings_panel.png)
+---
 *Select graph type, start node, algorithm, and step delay.*
-
+---
 ![Main Visualization](./images/main_visualization.png)
+---
 *Nodes animate in sequence during traversal.*
-
+---
 ![Textual Explanation](./images/textual_explanation.png)
+---
 *Expandable list of step-by-step descriptions.*
-
+---
 ![Test Cases Table](./images/test_cases_table.png)
+---
 *Test suite results showing Pass/Fail outcomes.*
-
+---
 ![Complexity Analysis](./images/complexity_analysis.png)
+---
 *Big O analysis for BFS and DFS.*
 
 ## Installation
