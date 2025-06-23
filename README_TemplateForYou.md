@@ -1,135 +1,186 @@
-# [Your Algorithm Name] - Interactive Visualization
+# BFS vs DFS Visualizer - Interactive Visualization
 
 ## Project Overview
 
-This project is an interactive web application that implements and visualizes [Algorithm Name], developed as part of the Algorithms and Programming II course at Fırat University, Software Engineering Department.
+This project is an interactive web application that implements and visualizes two fundamental graph traversal algorithms—**Breadth-First Search (BFS)** and **Depth-First Search (DFS)**—developed as part of the Algorithms and Programming II course at Fırat University, Software Engineering Department.
 
 ## Algorithm Description
 
-[Provide a comprehensive explanation of your algorithm here. Include the following elements:]
-
 ### Problem Definition
 
-[Clearly define the problem that the algorithm solves]
+Graph traversal is the process of visiting all the vertices (nodes) of a graph in a systematic order. It is used in numerous applications such as pathfinding, connectivity checks, and network analysis.
 
 ### Mathematical Background
 
-[Explain any mathematical concepts, formulas, or notation relevant to understanding the algorithm]
+A graph $G = (V, E)$ consists of a set of vertices $V$ and a set of edges $E$. In an unweighted graph:
+
+* **BFS** explores neighbors level by level, using a queue (FIFO).
+* **DFS** explores as deeply as possible along each branch before backtracking, using a stack (LIFO) or recursion.
 
 ### Algorithm Steps
 
-1. [Step 1 with explanation]
-2. [Step 2 with explanation]
-3. [Step 3 with explanation]
-...
+#### Breadth-First Search (BFS)
+
+1. Initialize a queue and enqueue the start node.
+2. Mark the start node as visited.
+3. While the queue is not empty:
+
+   1. Dequeue a node $u$.
+   2. For each neighbor $v$ of $u$ not yet visited:
+
+      1. Mark $v$ as visited.
+      2. Enqueue $v$.
+
+#### Depth-First Search (DFS)
+
+1. Initialize a stack (or use recursion) and push the start node.
+2. Mark the start node as visited.
+3. While the stack is not empty:
+
+   1. Pop a node $u$.
+   2. For each neighbor $v$ of $u$ (in reverse order if using a stack) not yet visited:
+
+      1. Mark $v$ as visited.
+      2. Push $v$ onto the stack.
 
 ### Pseudocode
 
-```
-[Include pseudocode representation of your algorithm]
+```plaintext
+function BFS(graph, start):
+    create empty set visited
+    create queue Q
+    enqueue start onto Q
+    add start to visited
+    while Q not empty:
+        u = dequeue Q
+        for each v in graph[u]:
+            if v not in visited:
+                enqueue v onto Q
+                add v to visited
+
+function DFS(graph, start):
+    create empty set visited
+    create stack S
+    push start onto S
+    while S not empty:
+        u = pop S
+        if u not in visited:
+            add u to visited
+            for each v in graph[u] in reverse order:
+                push v onto S
 ```
 
 ## Complexity Analysis
 
 ### Time Complexity
 
-- **Best Case:** O(...) - [Explanation]
-- **Average Case:** O(...) - [Explanation]
-- **Worst Case:** O(...) - [Explanation]
+* **BFS:** $O(V + E)$
+* **DFS:** $O(V + E)$
 
 ### Space Complexity
 
-- O(...) - [Explanation]
+* **BFS:** $O(V)$ auxiliary (visited set + queue)
+* **DFS:** $O(V)$ auxiliary (visited set + recursion/stack)
 
 ## Features
 
-- [Feature 1]
-- [Feature 2]
-- [Feature 3]
-...
+* **Graph Selection:** Linear Graph, Binary Tree, Tree with Uneven Depths, Directed Graph, or Cyclic Graph.
+* **Start Node:** Choose any existing node as the starting point.
+* **Algorithm Choice:** BFS or DFS traversal.
+* **Animation Speed:** Adjustable step delay.
+* **Animated Traversal:** Nodes highlight in green as visited.
+* **Textual Explanation:** Step-by-step log of visits.
+* **Test Cases:** Predefined suite covering normal, edge, and cyclic graphs.
+* **Complexity Analysis:** Big O time and space complexity display.
 
 ## Screenshots
 
-![Main Interface](docs/screenshots/main_interface.png)
-*Caption describing the main interface*
+![Settings Panel](./images/settings_panel.png)
+*Select graph type, start node, algorithm, and step delay.*
 
-![Algorithm in Action](docs/screenshots/algorithm_demo.png)
-*Caption describing the algorithm in action*
+![Main Visualization](./images/main_visualization.png)
+*Nodes animate in sequence during traversal.*
+
+![Textual Explanation](./images/textual_explanation.png)
+*Expandable list of step-by-step descriptions.*
+
+![Test Cases Table](./images/test_cases_table.png)
+*Test suite results showing Pass/Fail outcomes.*
+
+![Complexity Analysis](./images/complexity_analysis.png)
+*Big O analysis for BFS and DFS.*
 
 ## Installation
 
 ### Prerequisites
 
-- Python 3.8 or higher
-- Git
+* Python 3.8 or higher
+* Git
+* pip
 
 ### Setup Instructions
 
-1. Clone the repository:
+1. **Clone the repository:**
+
    ```bash
-   git clone https://github.com/yourusername/your-repository.git
-   cd your-repository
+   git clone https://github.com/yourusername/bfs-dfs-visualizer.git
+   cd bfs-dfs-visualizer
    ```
+2. **(Optional) Create and activate a virtual environment:**
 
-2. Create a virtual environment:
    ```bash
-   # On Windows
-   python -m venv venv
-   venv\Scripts\activate
-
-   # On macOS/Linux
    python3 -m venv venv
-   source venv/bin/activate
+   source venv/bin/activate   # macOS/Linux
+   venv\Scripts\activate    # Windows
    ```
+3. **Install dependencies:**
 
-3. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
+4. **Run the application:**
 
-4. Run the application:
    ```bash
    streamlit run app.py
    ```
 
 ## Usage Guide
 
-1. [Step 1 of using the application]
-2. [Step 2 of using the application]
-3. [Step 3 of using the application]
-...
-
-### Example Inputs
-
-- [Example 1 with expected output]
-- [Example 2 with expected output]
-- [Example 3 with expected output]
+1. Launch the app with `streamlit run app.py`.
+2. Use the sidebar to select graph type, start node, algorithm, and delay.
+3. Click **Run Traversal** to start.
+4. Watch the animated graph and read the textual log.
+5. Scroll down to view test case results and complexity analysis.
 
 ## Implementation Details
 
-### Key Components
-
-- `algorithm.py`: Contains the core algorithm implementation
-- `app.py`: Main Streamlit application
-- `utils.py`: Helper functions for data processing
-- `visualizer.py`: Functions for visualization
+* **algorithm.py:** BFS and DFS implementations with step logging.
+* **app.py:** Streamlit application orchestrating UI and visualization.
+* **utils.py:** Graph constructors and plotting utilities.
+* **test\_algorithm.py:** Unit tests validating traversal correctness.
 
 ### Code Highlights
 
 ```python
-# Include a few key code snippets that demonstrate the most important parts of your implementation
-def key_function(parameter):
-    """
-    Docstring explaining what this function does
-    """
-    # Implementation with comments explaining the logic
-    result = process(parameter)
-    return result
+def bfs(graph, start):
+    from collections import deque
+    visited = set()
+    queue = deque([start])
+    steps = []
+    while queue:
+        node = queue.popleft()
+        if node not in visited:
+            visited.add(node)
+            steps.append(list(visited))
+            for nbr in graph[node]:
+                if nbr not in visited:
+                    queue.append(nbr)
+    return steps
 ```
 
 ## Testing
 
-This project includes a test suite to verify the correctness of the algorithm implementation:
+Run the full test suite:
 
 ```bash
 python -m unittest test_algorithm.py
@@ -137,52 +188,46 @@ python -m unittest test_algorithm.py
 
 ### Test Cases
 
-- [Test case 1 description]
-- [Test case 2 description]
-- [Test case 3 description]
+* Empty graph returns an empty traversal.
+* Single-node graph returns the start node only.
+* Various linear, tree, and cyclic graphs ensure no infinite loops.
 
 ## Live Demo
 
-A live demo of this application is available at: [Insert Streamlit Cloud URL here]
+A live demo is available at: [https://your-deployment-url.streamlit.app](https://your-deployment-url.streamlit.app)
 
 ## Limitations and Future Improvements
 
 ### Current Limitations
 
-- [Limitation 1]
-- [Limitation 2]
-- [Limitation 3]
+* Limited to predefined sample graph types.
+* Does not support weighted or undirected edge weights.
+* Single start node only, no multiple-source traversal.
 
 ### Planned Improvements
 
-- [Improvement 1]
-- [Improvement 2]
-- [Improvement 3]
+* Allow custom graph input via text or file upload.
+* Support weighted graphs and shortest-path visualizations (Dijkstra, A\*).
+* Add undirected graph edge toggles and styling options.
+* Integrate real-time performance metrics and code export.
 
 ## References and Resources
 
-### Academic References
-
-1. [Reference 1]
-2. [Reference 2]
-3. [Reference 3]
-
-### Online Resources
-
-- [Resource 1]
-- [Resource 2]
-- [Resource 3]
+* Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. (2009). Introduction to Algorithms, Chapters 22–23.
+* Wikipedia: [Breadth-First Search](https://en.wikipedia.org/wiki/Breadth-first_search), [Depth-First Search](https://en.wikipedia.org/wiki/Depth-first_search)
+* Streamlit Documentation: [https://docs.streamlit.io](https://docs.streamlit.io)
+* NetworkX Documentation: [https://networkx.org](https://networkx.org)
 
 ## Author
 
-- **Name:** [Your Name]
-- **Student ID:** [Your Student ID]
-- **GitHub:** [Your GitHub Username]
+* **Name:** Muhammed Elubeyid
+* **Student ID:** 220543603
+* **GitHub:** MuhammedElubeyid
 
 ## Acknowledgements
 
-I would like to thank Assoc. Prof. Ferhat UÇAR for guidance throughout this project, and [any other acknowledgements].
+Thanks to Assoc. Prof. Ferhat UÇAR for guidance on this project.
 
 ---
 
-*This project was developed as part of the Algorithms and Programming II course at Fırat University, Technology Faculty, Software Engineering Department.*
+Developed for the Algorithms and Programming II course at Fırat University, Software Engineering Department.
