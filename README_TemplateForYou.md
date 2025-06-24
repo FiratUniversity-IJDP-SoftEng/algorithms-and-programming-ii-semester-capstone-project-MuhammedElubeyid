@@ -199,7 +199,7 @@ python -m unittest test_algorithm.py
 
 ## Live Demo
 
-A live demo is available at: [https://bfs-vs-dfs-visualizer---interactive-visualization-2lxzl8l8rrwf.streamlit.app/](https://bfs-vs-dfs-visualizer---interactive-visualization-2lxzl8l8rrwf.streamlit.app/)
+A live demo is available at: [https://bfs-vs-dfs-visualizer---interactive-visualization-hmrjfnzwkljd.streamlit.app/](https://bfs-vs-dfs-visualizer---interactive-visualization-hmrjfnzwkljd.streamlit.app/)
 
 ## Limitations and Future Improvements
 
